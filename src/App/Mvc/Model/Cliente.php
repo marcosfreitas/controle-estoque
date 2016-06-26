@@ -116,11 +116,9 @@ class Cliente extends Conexao {
 		$excluir = $this->__con->delete('cliente');
 
 		if ($excluir>0) {
-
-			return $excluir;
-
+			return true;
 		} else {
-			throw new \Exception("Não foi possível excluir o cliente.", 1);
+			throw new \Exception($this->__con->getLastError(), 1);
 		}
 	
 	}

@@ -13,20 +13,18 @@ class Controller {
         $this->controller = $controller;
         $this->acao = $acao;
  
- 		// iniciando o model
- 		// ex.: \App\Mvc\Model\Cliente
- 		$model = '\\App\\Mvc\\Model\\'.ucfirst($model);
- 		$this->model = new $model;
+ 		if (!empty($model)) {
+ 			// iniciando o model
+	 		// ex.: \App\Mvc\Model\Cliente
+	 		$model = '\\App\\Mvc\\Model\\'.ucfirst($model);
+	 		$this->model = new $model;
+ 		}
 
-        #$this->template = new \App\Mvc\View\Template($controller,$acao);
+        $this->template = new \App\Mvc\View\Template($controller, $acao);
  
-    }
- 
-    function define_vars($array_vars = array()) {
-        $this->template->define_vars($array_vars);
     }
  
     function __destruct() {
-         //$this->template->render();
+         $this->template->render();
     }
 }

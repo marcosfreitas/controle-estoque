@@ -1,0 +1,25 @@
+{
+  "name": "controle-estoque",
+  "homepage": "https://github.com/marcosfreitas/controle-estoque",
+  "authors": [
+    "Marcos Freitas <marcosfreitas@c4network.com.br>"
+  ],
+  "description": "controle de estoque simples",
+  "main": "",
+  "keywords": [
+    "estoque",
+    "sistema",
+    "controle",
+    "empresa"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {}
+}

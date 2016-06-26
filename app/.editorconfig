@@ -1,0 +1,25 @@
+# editorconfig.org
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line          = lfs
+insert_final_newline = true
+
+[*]
+indent_style             = tab
+indent_size              = 4
+charset                  = iso-8859-1
+trim_trailing_whitespace = true
+
+[*.md]
+trim_trailing_whitespace = false
+
+# Set default charset
+[*.js]
+charset = utf-8
+
+# Indentation override for all JS under libraries directory
+[js/libraries/**.js]
+indent_style = space
+indent_size = 2

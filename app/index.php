@@ -36,7 +36,7 @@ try {
 	$controller = isset($_GET['controller']) && !empty($_GET['controller']) ? $_GET['controller'] : null;
 	$acao       = isset($_GET['acao']) && !empty($_GET['acao']) ? $_GET['acao'] : null;
 
-	/*if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+	/*if ($_SERVER['REQUEST_METHOD'] === 'POST')) {
 
 		if ($controller === 'cliente') {
 
@@ -52,18 +52,14 @@ try {
 		if (!empty($controller) && !empty($acao)) {
 
 			if ($controller === 'cliente') {
-
-				$c = new App\Mvc\Controller\Cliente('Cliente', $controller, $acao);
-
-				$c->{$acao}();
-
-
-
-			}/* elseif($controller === 'produto') {
-				$c = new App\Mvc\Controller\Produto('Produto', $controller, $acao);
+				$i = new App\Mvc\Controller\Cliente('Cliente', $controller, $acao);
+			} elseif($controller === 'produto') {
+				$i = new App\Mvc\Controller\Produto('Produto', $controller, $acao);
 			} elseif($controller === 'pedido') {
-				$c = new App\Mvc\Controller\Pedido('Pedido', $controller, $acao);
-			}*/
+				$i = new App\Mvc\Controller\Pedido('Pedido', $controller, $acao);
+			}
+
+			$i->{$acao}();
 		} else {
 			$c = new App\Mvc\Controller\Cliente('Cliente', 'cliente', 'listar');
 			$c->listar();

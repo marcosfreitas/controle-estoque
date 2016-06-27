@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-xs-10 col-xs-offset-1">
 		<div class="panel panel-default">
-			<div class="panel-heading"><strong>Clientes cadastrados</strong></div>
+			<div class="panel-heading"><strong>Clientes Cadastrados</strong></div>
 			<table class="table table-striped table-bordered table-hover">
 
 				<?php

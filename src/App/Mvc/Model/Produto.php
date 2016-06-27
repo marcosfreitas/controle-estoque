@@ -12,17 +12,6 @@ class Produto extends Conexao {
 	private $p_preco = 0.00;
 
 	#
-	# Métodos Gets
-	#
-
-	public function getId(){ return $this->p_id; }
-	public function getNome(){ return $this->p_nome; }
-	public function getDescricao(){ return $this->p_descricao; }
-	public function getPreco(){ return \App\Core\Moeda::formata_moeda_br($this->p_preco); }
-
-
-
-	#
 	# Métodos
 	#
 
@@ -50,8 +39,8 @@ class Produto extends Conexao {
 		}
 
         # preço
-		if (is_numeric($p_preco)) {
-			$this->p_preco = \App\Core\Moeda::formata_decimal($this->p_preco);
+		if ($p_preco) {
+			$this->p_preco = \App\Core\Moeda::formata_decimal($p_preco);
 		}
 
 	}
@@ -70,11 +59,11 @@ class Produto extends Conexao {
 		);
 
 		# insert("tabela","dados")
-		$this->c_id = $this->__con->insert('produto', $params);
+		$this->p_id = $this->__con->insert('produto', $params);
 
-		if ($this->c_id) {
+		if ($this->p_id) {
 
-			return $this->c_id;
+			return $this->p_id;
 
 		} else {
 			throw new \Exception("Verifique os parâmetros da query de inserção.", 1);
@@ -95,20 +84,22 @@ class Produto extends Conexao {
 		$this->__con->where('p_id', $this->p_id);
 		$atualizar = $this->__con->update('produto', $params);
 
+
+		var_dump($this->__con->getLastQuery());
 		if ($atualizar>0) {
 
 			return $atualizar;
 
-		} else {
-			throw new \Exception("Verifique os parâmetros da query de atualização.", 1);
 		}
+		
+		throw new \Exception("Verifique os parâmetros da query de atualização.", 1);
 	
 	}
 
 	public function excluir() {
 
 		# where c_id = $this->c_id
-		$this->__con->where('p_id', $this->c_id);
+		$this->__con->where('p_id', $this->p_id);
 		$excluir = $this->__con->delete('produto');
 
 		if ($excluir>0) {
@@ -116,7 +107,7 @@ class Produto extends Conexao {
 			return $excluir;
 
 		} else {
-			throw new \Exception("Não foi possível excluir o cliente.", 1);
+			throw new \Exception("Não foi possível excluir o produto.", 1);
 		}
 	
 	}
@@ -127,14 +118,14 @@ class Produto extends Conexao {
 			return $todos;
 		}
 
-		throw new Exception("Nenhum produto cadastrado", 1);
+		return null;
 		
 	}
 
 	public function obter_dados($p_id = null) {
 		if (empty($p_id)) {
 			if (empty($this->p_id)) {
-				throw new Exception("Esperado o id do produto para verificar, mas não foi recebido.", 1);			
+				throw new \Exception("Esperado o id do produto para verificar, mas não foi recebido.", 1);			
 			}
 
 			$p_id = $this->p_id;
@@ -147,7 +138,7 @@ class Produto extends Conexao {
 			return $produto;
 		}
 
-		throw new Exception("Produto não encontrado.", 1);
+		throw new \Exception("Produto não encontrado.", 1);
 		
 	}
 

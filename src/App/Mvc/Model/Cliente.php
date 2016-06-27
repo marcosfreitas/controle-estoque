@@ -10,16 +10,6 @@ class Cliente extends Conexao {
 	private $c_email;
 	private $c_telefone;
 
-
-	#
-	# Métodos Gets
-	#
-
-	public function getId(){ return $this->c_id; }
-	public function getNome(){ return $this->c_nome; }
-	public function getEmail(){ return $this->c_email; }
-	public function getTelefone(){ return $this->c_telefone; }
-
 	#
 	# Métodos
 	#

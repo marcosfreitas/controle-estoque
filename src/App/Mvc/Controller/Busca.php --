@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Mvc\Controller;
+
+# realiza as buscas no banco e retorna um array
+class Busca extends Controller {
+	
+	public function __contruct() {
+		parent::__contruct();
+	}
+
+
+	public function buscarCliente($filtro = null) {
+
+		if (empty($filtro)) return;
+
+
+	}
+
+}

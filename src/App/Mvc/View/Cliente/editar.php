@@ -4,7 +4,7 @@
 <div class="row">
 	<div class="col-xs-10 col-xs-offset-1">
 		<div class="panel panel-default">
-			<div class="panel-heading"><strong>Editar cliente</strong></div>
+			<div class="panel-heading"><strong>Editar Cliente</strong></div>
 
 			<?php if (!empty($cliente)) { ?>
 			<form action="<?php echo URL_APP; ?>?controller=cliente&acao=editar&codigo=<?php echo $cliente['c_id']; ?>" method="post">
@@ -23,11 +23,11 @@
 						<tr>
 							<td class="text-center"><?php echo $cliente['c_id']; ?></td>
 							<td><input class="col-xs-12" type="text" name="c_nome" value="<?php echo $cliente['c_nome']; ?>"></td>
-							<td><input class="col-xs-12" type="emil" name="c_email" value="<?php echo $cliente['c_email']; ?>"></td>
+							<td><input class="col-xs-12" type="email" name="c_email" value="<?php echo $cliente['c_email']; ?>"></td>
 							<td><input class="col-xs-12" type="phone" name="c_telefone" value="<?php echo $cliente['c_telefone']; ?>"></td>
 							<td class="text-center">
-								<button class="btn btn-sm btn-primary" type="submit" name="submit"><span class="glyphicon glyphicon-floppy-save"></span> Salvar dados</button>
-								<a href="<?php echo URL_APP; ?>?controller=cliente&acao=excluir&codigo=<?php echo $cliente['c_id']; ?>" class="btn btn-sm btn-danger" type="submit" name="submit"><span class="glyphicon glyphicon-trash"></span></a>
+								<button class="btn btn-sm btn-primary" type="submit"><span class="glyphicon glyphicon-floppy-save"></span> Salvar dados</button>
+								<a href="<?php echo URL_APP; ?>?controller=cliente&acao=excluir&codigo=<?php echo $cliente['c_id']; ?>" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
 							</td>
 						</tr>
 					</tbody>

@@ -3,15 +3,15 @@
 namespace App\Mvc\Controller;
 
 /**
- * Controller dos clientes
+ * Controller dos produtos
  * -- 
  */
-class Cliente extends Controller {
+class Produto extends Controller {
 
-	private $c_id;
-	private $c_nome;
-	private $c_email;
-	private $c_telefone;
+	private $p_id;
+	private $p_nome;
+	private $p_descricao;
+	private $p_preco;
 	
 	public function __contruct() {
 		parent::__contruct();
@@ -22,14 +22,14 @@ class Cliente extends Controller {
 
 		try {
 
-			$clientes = $this->model->todos_clientes();
+			$produtos = $this->model->todos_produtos();
 		
 		} catch (\Exception $e){
 			$_SESSION['message'] = $e->getMessage();
 		}
 
 		// cria variaveis de acordo com as variaveis retornadas
-		$this->template->define_vars($clientes);
+		$this->template->define_vars($produtos);
 		// a renderização acontece no destruct
 	}
 
@@ -45,14 +45,15 @@ class Cliente extends Controller {
 					$this->{$chave} = $valor;
 				}
 
-				$this->model->__construct($this->c_id, $this->c_nome, $this->c_email, $this->c_telefone);		
+				$this->model->__construct($this->p_id, $this->p_nome, $this->p_descricao, $this->p_preco);		
 				
 				if ($this->model->atualizar()){
-					$_SESSION['message'] = "Cliente atualizado com sucesso";
+					$_SESSION['message'] = "Produto atualizado com sucesso";
 				} else {
-					$_SESSION['message'] = "Não foi possível atualizar os dados do cliente";
+					$_SESSION['message'] = "Não foi possível atualizar os dados do produto";
 				}
-				#header('Location: '. URL_APP .'?controller=cliente&acao=editar&codigo='. $this->c_id);
+
+				#header('Location: '. URL_APP .'?controller=produto&acao=editar&codigo='. $this->c_id);
 				#exit;
 			
 			} catch (\Exception $e) {
@@ -62,9 +63,9 @@ class Cliente extends Controller {
 		}
 
 		$this->model->__construct($_GET['codigo']);
-		$cliente = $this->model->obter_dados();
+		$produto = $this->model->obter_dados();
 
-		$this->template->define_vars($cliente);
+		$this->template->define_vars($produto);
 	}
 
 	public function adicionar() {
@@ -80,14 +81,14 @@ class Cliente extends Controller {
 					$this->{$chave} = $valor;
 				}
 
-				$this->model->__construct(null, $this->c_nome, $this->c_email, $this->c_telefone);		
-				$this->c_id = $this->model->inserir();
+				$this->model->__construct(null, $this->p_nome, $this->p_descricao, $this->p_preco);		
+				$this->p_id = $this->model->inserir();
 				
-				if (is_numeric($this->c_id)){
-					$_SESSION['message'] = "Cliente cadastrado com sucesso";
+				if (is_numeric($this->p_id)){
+					$_SESSION['message'] = "Produto cadastrado com sucesso";
 				}
 				
-				header('Location: '. URL_APP .'?controller=cliente&acao=editar&codigo='. $this->c_id);
+				header('Location: '. URL_APP .'?controller=produto&acao=editar&codigo='. $this->p_id);
 				exit;  
 			
 			} catch (\Exception $e) {
@@ -104,10 +105,10 @@ class Cliente extends Controller {
 			$this->model->__construct($_GET['codigo']);
 			
 			if ($this->model->excluir()){
-				$_SESSION['message'] = "Cliente excluído com sucesso";
+				$_SESSION['message'] = "Produto excluído com sucesso";
 			}
 
-			header('Location: '. URL_APP .'?controller=cliente&acao=listar');
+			header('Location: '. URL_APP .'?controller=produto&acao=listar');
 			exit;  
 		
 		} catch (\Exception $e) {

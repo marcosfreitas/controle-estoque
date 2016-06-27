@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-xs-10 col-xs-offset-1">
 		<div class="panel panel-default">
-			<div class="panel-heading"><strong>Adicionar cliente</strong></div>
+			<div class="panel-heading"><strong>Adicionar Cliente</strong></div>
 
 			<form action="<?php echo URL_APP; ?>?controller=cliente&acao=adicionar" method="post">
 				<table class="table table-striped table-bordered table-hover">
@@ -15,11 +15,11 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input class="col-xs-12" type="text" name="c_nome" value=""></td>
-							<td><input class="col-xs-12" type="emil" name="c_email" value=""></td>
-							<td><input class="col-xs-12" type="phone" name="c_telefone" value=""></td>
+							<td><input required class="col-xs-12" type="text" name="c_nome" value=""></td>
+							<td><input required class="col-xs-12" type="email" name="c_email" value=""></td>
+							<td><input required class="col-xs-12" type="phone" name="c_telefone" value=""></td>
 							<td class="text-center">
-								<button class="btn btn-sm btn-primary" type="submit" name="submit"><span class="glyphicon glyphicon-floppy-save"></span> Salvar dados</button>
+								<button class="btn btn-sm btn-primary" type="submit"><span class="glyphicon glyphicon-floppy-save"></span> Salvar dados</button>
 							</td>
 						</tr>
 					</tbody>
